@@ -4,7 +4,7 @@
              x:Class="MauiApp1.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
+        <!--<VerticalStackLayout
             Padding="30,0"
             Spacing="25">
             <Image
@@ -30,7 +30,14 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+        </VerticalStackLayout>-->
+
+        <VerticalStackLayout Padding="20">
+            <Label Text="File Encryption and Decryption" FontSize="24" HorizontalOptions="Center" Margin="0,20"/>
+            <Button x:Name="SelectFileButton" Text="Select File" Clicked="SelectFileButton_Clicked" Margin="0,20"/>
+            <Label x:Name="StatusLabel" Text="" FontSize="18" TextColor="Red" HorizontalOptions="Center" Margin="0,20"/>
         </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>
