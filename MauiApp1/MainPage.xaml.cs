@@ -6,6 +6,7 @@ public partial class MainPage : ContentPage
 
 	// calling the Encryptor class
 	private Encryptor _encryptor;
+	private Decryptor _decryptor;
 
 	private string _key = "{s86#}LetRCon*&$";
 
@@ -13,6 +14,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 		_encryptor = new Encryptor(_key);
+		_decryptor = new Decryptor(_key);
 	}
 
 	private async void SelectFileButton_Clicked(object sender, EventArgs e)
@@ -25,10 +27,9 @@ public partial class MainPage : ContentPage
 			// checking if the file is encrypted or not
 			if (_encryptor.IsEncrypted(filePath))
 			{
-				// var decryptedText = DecryptFile(filePath);
-				//DisplayAlert("Success", $"The selected file was successfully decrypted", "OK");
-				// StatusLabel.Text = $"Decrypted content:\n{decryptedText}";
-				Console.WriteLine("Still in progress!");
+				var decryptedText = _decryptor.DecryptFile(filePath);
+				StatusLabel.Text = $"Decrypted content:\n{decryptedText}";
+				DisplayAlert("Success", $"The selected file was successfully decrypted", "OK");
 			}
 			else 
 			{
@@ -38,20 +39,6 @@ public partial class MainPage : ContentPage
 			}
 		}
 	}
-
-	// private void OnCounterClicked(object sender, EventArgs e)
-	// {
-	// 	count++;
-
-	// 	if (count == 1)
-	// 		CounterBtn.Text = $"Clicked {count} time";
-	// 	else
-	// 		CounterBtn.Text = $"Clicked {count} times";
-
-	// 	SemanticScreenReader.Announce(CounterBtn.Text);
-	// }
-
-
 
 
 }

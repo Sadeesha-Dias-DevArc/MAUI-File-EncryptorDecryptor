@@ -5,9 +5,9 @@ namespace MauiApp1;
 
 public class Encryptor
 {
-    private string _key;
+    private string _Ekey;
 
-    public Encryptor(string encryptionKey) => _key = encryptionKey;
+    public Encryptor(string encryptionKey) => _Ekey = encryptionKey;
 
     public bool IsEncrypted(string filePath)
     {
@@ -17,7 +17,7 @@ public class Encryptor
     public string EncryptFile(string filePath) 
     {
         var content  = File.ReadAllText(filePath);
-        var encryptedContent = EncryptString(content, _key);
+        var encryptedContent = EncryptString(content, _Ekey);
         var encryptedFilePath = Path.ChangeExtension(filePath, ".encrypted");
         File.WriteAllText(encryptedFilePath, $"ENCRYPTED:{encryptedContent}");
         return encryptedFilePath;
@@ -39,7 +39,6 @@ public class Encryptor
                     {
                         swEncrypt.Write(text);
                     }
-
                 }
                 return Convert.ToBase64String(msEncryption.ToArray());
             }
